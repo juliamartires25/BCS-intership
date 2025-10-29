@@ -80,221 +80,156 @@
       cursor: pointer;
     }
 
-    /* Hero / Featured */
-    .hero {
-      height: 56vh;
-      min-height: 420px;
-      padding: 92px 48px 40px 48px;
-      display: flex;
-      align-items: flex-end;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(180deg, rgba(17,17,17,0) 10%, rgba(17,17,17,0.9) 70%);
-      pointer-events: none;
-    }
-    .hero-card {
-      max-width: 780px;
-      z-index: 2;
-    }
-    .hero .eyebrow {
-      color: #bdbdbd;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .hero h1 {
-      font-size: 44px;
-      margin-bottom: 12px;
-    }
-    .hero .meta {
-      color: #bdbdbd;
-      margin-bottom: 18px;
-    }
-    .hero .cta {
-      display: flex;
-      gap: 12px;
-    }
-    .hero .btn {
-      padding: 12px 18px;
-      font-weight: 700;
-      border-radius: 6px;
-      border: 0;
-      cursor: pointer;
-    }
-    .hero .btn.play {
-      background: #fff;
-      color: #000;
-    }
-    .hero .btn.info {
-      background: rgba(255,255,255,0.12);
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: #111;
       color: #fff;
-    }
-
-    /* Rows / Project sections */
-    .rows {
-      padding: 28px 40px 80px;
-    }
-    .row {
-      margin-bottom: 26px;
-    }
-    .row-title {
-      font-weight: 700;
-      margin: 6px 0 12px;
-    }
-    .row-items {
       display: flex;
-      gap: 14px;
-      overflow: auto;
-      padding-bottom: 6px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 60px 20px;
     }
-    .tile {
-      min-width: 270px;
-      height: 178px;
-      border-radius: 8px;
-      flex: 0 0 auto;
-      background: linear-gradient(180deg, #333, #111);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform .22s ease, box-shadow .22s ease;
+
+    .profile-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 24px 30px;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+      animation: fadeIn 0.6s ease;
     }
-    .tile:hover {
-      transform: scale(1.08);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .tile .poster {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
     }
-    .tile .label {
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
+
+    .profile-header img {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-header .info h2 {
+      font-size: 20px;
       font-weight: 700;
     }
-    .tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(0,0,0,0.55) 100%);
-    }
 
-    /* Scrollbar style for row-items */
-    .row-items::-webkit-scrollbar {
-      height: 10px;
-    }
-    .row-items::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.06);
-      border-radius: 10px;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 900px) {
-      .hero h1 { font-size: 32px; }
-      .hero { padding: 84px 20px 30px 20px; }
-      .rows { padding: 20px; }
-      .tile { min-width: 160px; height: 110px; }
-    }
-    @media (max-width: 520px) {
-      .nav .nav-links { display: none; }
-      .hero { height: 48vh; padding-top: 74px; }
-      .logo { font-size: 18px; }
-      .tile { min-width: 140px; height: 96px; }
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .muted {
+    .profile-header .info p {
       color: #bdbdbd;
+      font-size: 15px;
     }
 
+    .profile-body p {
+      margin: 12px 0;
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.4;
+    }
 
-/* Carousel */
-.carousel-container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-}
+    .profile-body .subtext {
+      color: #a0a0a0;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
 
-.carousel {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
-}
+    .linkedin-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #0077b5;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
 
-.slide {
-  min-width: 100%;
-  transition: opacity 0.6s ease;
-  display: none;
-}
+    .linkedin-btn:hover {
+      background-color: #006097;
+    }
 
-.slide.active {
-  display: block;
-}
+    .linkedin-btn svg {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+      fill: white;
+    }
 
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
+    .contact-text {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ddd;
+    }
 
-/* Navigation buttons */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  border: none;
-  color: white;
-  font-size: 28px;
-  padding: 8px 16px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.3s;
-  z-index: 10;
-}
+    .contact-buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
 
-.prev:hover, .next:hover {
-  background-color: rgba(255,255,255,0.2);
-}
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #1e1e1e;
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+    .contact-btn:hover {
+      background: #2a2a2a;
+      transform: translateY(-2px);
+    }
 
-/* Dots (indicators) */
-.dots {
-  text-align: center;
-  margin-top: 12px;
-}
+    .contact-btn .icon {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #e50914;
+    }
 
-.dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 5px;
-  background-color: rgba(255,255,255,0.3);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+    .contact-btn .icon svg {
+      width: 14px;
+      height: 14px;
+      fill: #fff;
+    }
 
-.dot.active, .dot:hover {
-  background-color: #fff;
-}
-
-  </style>
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+</style>
 </head>
+
 <body>
   <header class="nav">
     <div class="brand">
@@ -311,68 +246,43 @@
       <div class="avatar" title="Account">JM</div>
     </div>
   </header>
-
-<main style="padding-top: 100px;">
-  <div class="carousel-container">
-    <div class="carousel">
-      <div class="slide active">
-        <img src="images/cert1.jpg" alt="Certificate 1">
-      </div>
-      <div class="slide">
-        <img src="images/cert2.jpg" alt="Certificate 2">
-      </div>
-      <div class="slide">
-        <img src="images/cert3.jpg" alt="Certificate 3">
+<div class="profile-card">
+    <div class="profile-header">
+      <img src="netflix/mypic.jpg" alt="Profile Photo">
+      <div class="info">
+        <h2>Julia Martires</h2>
+        <p>Software Engineer</p>
       </div>
     </div>
 
-    <!-- Navigation buttons -->
-    <button class="prev" onclick="moveSlide(-1)">❮</button>
-    <button class="next" onclick="moveSlide(1)">❯</button>
+    <div class="profile-body">
+      <p>With experience in Python, Java, and C++, I focus on software development, algorithms, and artificial intelligence projects. Passionate about learning and problem-solving.</p>
+      <p class="subtext">University of Hertfordshire | Computer Science</p>
+      <a href="https://www.linkedin.com/in/julia-martires-010479285/" target="_blank" class="linkedin-btn">
 
-    <!-- Dots -->
-    <div class="dots">
-      <span class="dot active" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
+        View Profile
+      </a>
     </div>
   </div>
-</main>
 
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
+  <p class="contact-text">I'm always up for a chat or a coffee! Feel free to reach out.</p>
 
-function moveSlide(n) {
-  showSlides(slideIndex += n);
-}
+  <div class="contact-buttons">
+    <a href="mailto:juliamartires101@gmail.com" class="contact-btn">
+      <div class="icon">
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+      </div>
+      juliamartires101@gmail.com
+    </a>
 
-function showSlides(n) {
-  const slides = document.getElementsByClassName("slide");
-  const dots = document.getElementsByClassName("dot");
+    <a href="tel:+447587486942" class="contact-btn">
+      <div class="icon">
 
-  if (n > slides.length) slideIndex = 1;
-  if (n < 1) slideIndex = slides.length;
+      </div>
+      +44 7587 486942
+    </a>
+  </div>
 
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].classList.remove("active");
-  }
-
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].classList.add("active");
-}
-
-// Optional: auto-slide every 5 seconds
-setInterval(() => { moveSlide(1); }, 5000);
-</script>
 
 
 
