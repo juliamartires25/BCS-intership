@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Julia Martires</title>
+
+<style>
+
+/* Navigation */
+    header.nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 40;
+      background: linear-gradient(180deg, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.4) 60%, transparent 100%);
+      backdrop-filter: blur(6px);
+    }
+    .nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .nav .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: #e50914;
+      cursor: pointer;
+    }
+    .nav .nav-links {
+      display: flex;
+      gap: 14px;
+      font-weight: 600;
+      color: #ddd;
+    }
+    .nav .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .nav .nav-links a:hover {
+      background: rgba(255,255,255,0.03);
+    }
+    .nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav .search {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+    }
+    .nav .avatar {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #444, #222);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+      color: #e50914;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 20px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #444;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+      padding-left: 60px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #e50914;
+      top: 0;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+    }
+
+    .timeline-item .meta {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      .timeline::before {
+        left: 10px;
+      }
+      .timeline-item {
+        padding-left: 50px;
+      }
+      .timeline-item::before {
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="nav">
+    <div class="brand">
+      <div class="logo"> JULIA MARTIRES</div>
+      <nav class="nav-links">
+        <a href="netflix_profile.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <div class="search" title="Search">🔍</div>
+      <div class="avatar" title="Account">JM</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Work Experience</h1>
+
+    <ul class="timeline">
+      <li class="timeline-item">
+        <h3>Computer Science Society - Secretary</h3>
+        <div class="meta">Student Union - June 2025 to Present</div>
+        <p>Coordinate events, manage records, and support collaboration to enhance student engagement within the society.</p>
+      </li>
+
+      <li class="timeline-item">
+        <h3>Web Developer</h3>
+        <div class="meta">BCS - August 2025 to October 2025</div>
+        <p>Design and develop responsive websites, ensuring functionality, accessibility, and seamless user experiences.</p>
+      </li>
+
+      <li class="timeline-item">
+        <h3>Software Engineer</h3>
+        <div class="meta">Satrex Ltd - September 2025 to Present</div>
+        <p>Developed and optimized software solutions, improving system efficiency and ensuring high-quality code performance.</p>
+      </li>
+
+      <li class="timeline-item">
+        <h3>University of Hertfordshire - Bachelor's</h3>
+        <div class="meta">September 2023 to Present</div>
+        <p>Pursuing a BSc in Computer Science, developing strong skills in programming, software engineering, and artificial intelligence.</p>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>

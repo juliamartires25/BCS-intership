@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Julia Martires</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Inter, system-ui, -apple-system, ‘Segoe UI’, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.2;
+    }
+
+    /* Navigation */
+    header.nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 40;
+      background: linear-gradient(180deg, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.4) 60%, transparent 100%);
+      backdrop-filter: blur(6px);
+    }
+    .nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .nav .logo {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: #e50914;
+      cursor: pointer;
+    }
+    .nav .nav-links {
+      display: flex;
+      gap: 14px;
+      font-weight: 600;
+      color: #ddd;
+    }
+    .nav .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .nav .nav-links a:hover {
+      background: rgba(255,255,255,0.03);
+    }
+    .nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav .search {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+    }
+    .nav .avatar {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #444, #222);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* Hero / Featured */
+    .hero {
+      height: 56vh;
+      min-height: 420px;
+      padding: 92px 48px 40px 48px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(180deg, rgba(17,17,17,0) 10%, rgba(17,17,17,0.9) 70%);
+      pointer-events: none;
+    }
+    .hero-card {
+      max-width: 780px;
+      z-index: 2;
+    }
+    .hero .eyebrow {
+      color: #bdbdbd;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: 44px;
+      margin-bottom: 12px;
+    }
+    .hero .meta {
+      color: #bdbdbd;
+      margin-bottom: 18px;
+    }
+    .hero .cta {
+      display: flex;
+      gap: 12px;
+    }
+    .hero .btn {
+      padding: 12px 18px;
+      font-weight: 700;
+      border-radius: 6px;
+      border: 0;
+      cursor: pointer;
+    }
+    .hero .btn.play {
+      background: #fff;
+      color: #000;
+    }
+    .hero .btn.info {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    /* Rows / Project sections */
+    .rows {
+      padding: 28px 40px 80px;
+    }
+    .row {
+      margin-bottom: 26px;
+    }
+    .row-title {
+      font-weight: 700;
+      margin: 6px 0 12px;
+    }
+    .row-items {
+      display: flex;
+      gap: 14px;
+      overflow: auto;
+      padding-bottom: 6px;
+    }
+    .tile {
+      min-width: 270px;
+      height: 178px;
+      border-radius: 8px;
+      flex: 0 0 auto;
+      background: linear-gradient(180deg, #333, #111);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .tile:hover {
+      transform: scale(1.08);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+    }
+    .tile .poster {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .tile .label {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-weight: 700;
+    }
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(0,0,0,0.55) 100%);
+    }
+
+    /* Scrollbar style for row-items */
+    .row-items::-webkit-scrollbar {
+      height: 10px;
+    }
+    .row-items::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 32px; }
+      .hero { padding: 84px 20px 30px 20px; }
+      .rows { padding: 20px; }
+      .tile { min-width: 160px; height: 110px; }
+    }
+    @media (max-width: 520px) {
+      .nav .nav-links { display: none; }
+      .hero { height: 48vh; padding-top: 74px; }
+      .logo { font-size: 18px; }
+      .tile { min-width: 140px; height: 96px; }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .muted {
+      color: #bdbdbd;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <div class="logo"> JULIA MARTIRES</div>
+      <nav class="nav-links">
+        <a href="netflix_profile.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <div class="search" title="Search">🔍</div>
+      <div class="avatar" title="Account">JM</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="background-image: linear-gradient(120deg, rgba(255,40,40,0.06), rgba(0,0,0,0)), url('netflix/profile3.jpg'); background-size: cover; background-position: center;">
+      <div class="hero-card container">
+        <div class="eyebrow">Featured Project</div>
+        <h1>Julia Martires - Software Engineer</h1>
+        <div class="meta">I am a second-year Computer Science student with experience in Python, Java, and C++. My academic projects have deepened my understanding of algorithms, software development, and artificial intelligence through academic projects. I am seeking a placement to apply my programming, problem-solving, and teamwork skills in a real-world setting. I am eager to gain practical experience, contribute to projects, and continue learning in a professional environment.</div>
+        <div class="cta">
+          <a href="RESUME_JULIA_MARTIRES.pdf" class="btn play" download>▶ Resumé</a>
+          <a href="https://www.linkedin.com/in/julia-martires-010479285/" class="btn info">ⓘ LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rows container">
+      <div class="row">
+        <div class="row-title">Today's Top Picks for Recruiter</div>
+        <div class="row-items">
+	<a href="skills.html" style="text-decoration: none; color: inherit;">
+          <div class="tile">
+            <div class="poster" style="background-image: url('netflix/skills.jpeg');"></div>
+            <div class="label">Skills</div>
+          </div>
+	</a>
+
+	<a href="experience.html" style="text-decoration: none; color: inherit;">
+          <div class="tile">
+            <div class="poster" style="background-image: url('netflix/experience.jpg');"></div>
+            <div class="label">Experience</div>
+          </div>
+	</a>
+
+	<a href="certifications.html" style="text-decoration: none; color: inherit;">
+          <div class="tile">
+            <div class="poster" style="background-image: url('netflix/certifications.webp');"></div>
+            <div class="label">Certifications</div>
+          </div>
+	</a>
+
+	<a href="contactme.html" style="text-decoration: none; color: inherit;">
+	  <div class="tile">
+            <div class="poster" style="background-image: url('netflix/contact.jpg');"></div>
+            <div class="label">Contact Me</div>
+          </div>
+	</a>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="row-title">Continue Watching for Recruiter</div>
+        <div class="row-items">
+          <div class="tile">
+            <div class="poster" style="background-image: url('netflix/skills.jpeg');"></div>
+            <div class="label">Project 1</div>
+          </div>
+          <div class="tile">
+            <div class="poster" style="background-image: url('img/project5.jpg');"></div>
+            <div class="label">Project 2</div>
+          </div>
+	  <div class="tile">
+            <div class="poster" style="background-image: url('img/project5.jpg');"></div>
+            <div class="label">Project 3</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer style="padding: 28px 40px; color: #9b9b9b; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.6));">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div class="muted">© 2025 Julia Martires</div>
+    </div>
+  </footer>
+</body>
+</html>
